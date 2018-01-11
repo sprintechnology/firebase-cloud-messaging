@@ -45,6 +45,6 @@ class FCMService
             'body' => $data
         ]);
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), Response::class, 'json');
+        return $this->serializer->deserialize($response->getBody(), Response::class, 'json');
     }
 }

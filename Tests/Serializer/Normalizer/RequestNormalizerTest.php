@@ -3,29 +3,30 @@
 namespace Firebase\Bundle\CloudMessagingBundle\Tests\Serializer\Normalizer;
 
 use Firebase\Bundle\CloudMessagingBundle\Http\Request;
+use Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\Request\Notification\AndroidNormalizer;
+use Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\Request\Notification\IOSNormalizer;
+use Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\Request\Notification\WebNormalizer;
+use Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\RequestNormalizer;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
 
 class RequestNormalizerTest extends WebTestCase
 {
-    /** @var  Container */
-    protected $container;
-
-    public function setUp()
-    {
-        $client = self::createClient();
-        $this->container = $client->getContainer();
-    }
-
     /**
      * @group firebase
      * @group firebase-normalizer
      */
     public function testCanNormalizeRequest()
     {
-        /** @var Serializer $serializer */
-        $serializer = $this->container->get('serializer');
+        $serializer = new Serializer([
+            new RequestNormalizer(),
+            new AndroidNormalizer(),
+            new IOSNormalizer(),
+            new WebNormalizer()
+        ], [
+            new JsonEncoder()
+        ]);
 
         $request = new Request();
         $request->setTo($to = 'testto');

@@ -4,27 +4,49 @@ namespace Firebase\Bundle\CloudMessagingBundle\Tests\Service;
 
 use Firebase\Bundle\CloudMessagingBundle\Http\Request;
 use Firebase\Bundle\CloudMessagingBundle\Http\Response;
+use Firebase\Bundle\CloudMessagingBundle\Serializer\Denormalizer\Response\ResultDenormalizer;
+use Firebase\Bundle\CloudMessagingBundle\Serializer\Denormalizer\ResponseDenormalizer;
+use Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\Request\Notification\AndroidNormalizer;
+use Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\Request\Notification\IOSNormalizer;
+use Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\Request\Notification\WebNormalizer;
+use Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\RequestNormalizer;
 use Firebase\Bundle\CloudMessagingBundle\Service\FCMService;
+use Guzzle\Http\Client;
+use Guzzle\Http\EntityBody;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Serializer\Encoder\JsonDecode;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Serializer;
 
 class FCMServiceTest extends WebTestCase
 {
-    protected $container;
-
-    public function setUp()
-    {
-        $client = self::createClient();
-        $this->container = $client->getContainer();
-    }
-
     /**
      * @group firebase
      * @group fsm-service
      */
     public function testCanSendMessage()
     {
+        $serializer = new Serializer([
+            new RequestNormalizer(),
+            new AndroidNormalizer(),
+            new IOSNormalizer(),
+            new WebNormalizer(),
+            new ResponseDenormalizer(),
+            new ResultDenormalizer()
+        ], [
+            new JsonEncoder(),
+            new JsonDecode()
+        ]);
+
+        $client = $this->createMock(Client::class);
+        $client
+            ->expects($this->once())
+            ->method('post')
+            ->with('https://fcm.googleapis.com/fcm/send', ['body' => '{"to":"drhmEFw8E_8:APA91bEIbR93j_xKHpnBIzdRnk3JfuHnOs3883ekpI0FeDd_41r-VfX4MDNAKodOxpRNMJC89mzX3dfUWbPSgHeKyKlrc9V6X6podGYJLAunubxZAHe0IAe2va_PhV7veAJM53SXegdl","notification":{"title":"Unit test","body":"Body unit test"}}'])
+            ->willReturn(new \Guzzle\Http\Message\Response('200', null, '{}'));
+
         /** @var FCMService $fcmService */
-        $fcmService = $this->container->get('firebase.cloud_messaging.service');
+        $fcmService = new FCMService($client, $serializer);
 
         $request = new Request();
         $request->setTo('drhmEFw8E_8:APA91bEIbR93j_xKHpnBIzdRnk3JfuHnOs3883ekpI0FeDd_41r-VfX4MDNAKodOxpRNMJC89mzX3dfUWbPSgHeKyKlrc9V6X6podGYJLAunubxZAHe0IAe2va_PhV7veAJM53SXegdl');
