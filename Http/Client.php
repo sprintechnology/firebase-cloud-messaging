@@ -2,7 +2,7 @@
 
 namespace Firebase\Bundle\CloudMessagingBundle\Http;
 
-class Client extends \Guzzle\Http\Client
+class Client extends \GuzzleHttp\Client
 {
     private static $uri = 'https://fcm.googleapis.com/fcm/send';
 
