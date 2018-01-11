@@ -11,8 +11,7 @@ use Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\Request\Notificat
 use Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\Request\Notification\WebNormalizer;
 use Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\RequestNormalizer;
 use Firebase\Bundle\CloudMessagingBundle\Service\FCMService;
-use Guzzle\Http\Client;
-use Guzzle\Http\EntityBody;
+use GuzzleHttp\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -41,9 +40,9 @@ class FCMServiceTest extends WebTestCase
         $client = $this->createMock(Client::class);
         $client
             ->expects($this->once())
-            ->method('post')
-            ->with('https://fcm.googleapis.com/fcm/send', ['body' => '{"to":"drhmEFw8E_8:APA91bEIbR93j_xKHpnBIzdRnk3JfuHnOs3883ekpI0FeDd_41r-VfX4MDNAKodOxpRNMJC89mzX3dfUWbPSgHeKyKlrc9V6X6podGYJLAunubxZAHe0IAe2va_PhV7veAJM53SXegdl","notification":{"title":"Unit test","body":"Body unit test"}}'])
-            ->willReturn(new \Guzzle\Http\Message\Response('200', null, '{}'));
+            ->method('__call')
+            ->with('post', ['https://fcm.googleapis.com/fcm/send', ['body' => '{"to":"drhmEFw8E_8:APA91bEIbR93j_xKHpnBIzdRnk3JfuHnOs3883ekpI0FeDd_41r-VfX4MDNAKodOxpRNMJC89mzX3dfUWbPSgHeKyKlrc9V6X6podGYJLAunubxZAHe0IAe2va_PhV7veAJM53SXegdl","notification":{"title":"Unit test","body":"Body unit test"}}']])
+            ->willReturn(new \GuzzleHttp\Psr7\Response('200', [], '{}'));
 
         /** @var FCMService $fcmService */
         $fcmService = new FCMService($client, $serializer);

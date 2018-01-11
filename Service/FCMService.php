@@ -4,7 +4,7 @@ namespace Firebase\Bundle\CloudMessagingBundle\Service;
 
 use Firebase\Bundle\CloudMessagingBundle\Http\Request;
 use Firebase\Bundle\CloudMessagingBundle\Http\Response;
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -45,6 +45,6 @@ class FCMService
             'body' => $data
         ]);
 
-        return $this->serializer->deserialize($response->getBody(), Response::class, 'json');
+        return $this->serializer->deserialize($response->getBody()->getContents(), Response::class, 'json');
     }
 }
