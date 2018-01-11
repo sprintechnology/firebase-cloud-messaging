@@ -2,6 +2,7 @@
   "name": "sprintechnology/firebase-cloud-messaging",
   "description": "A bundle for Firebase cloud messaging",
   "type": "symfony-bundle",
+  "license": "MIT",
   "require": {
     "symfony/console": "^4.0",
     "symfony/stopwatch": "^4.0",
