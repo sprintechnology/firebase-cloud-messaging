@@ -1,0 +1,24 @@
+{
+  "name": "firebase/cloud-messaging",
+  "description": "A bundle for Firebase cloud messaging",
+  "type": "symfony-bundle",
+  "require": {
+    "symfony/console": "^4.0",
+    "symfony/stopwatch": "^4.0",
+    "symfony/config": "^4.0",
+    "symfony/dependency-injection": "^4.0",
+    "symfony/serializer": "^4.0",
+    "symfony/yaml": "^4.0",
+    "symfony/framework-bundle": "^4.0",
+    "guzzlehttp/guzzle": "^3.8"
+  },
+  "require-dev": {
+    "symfony/phpunit-bridge": "~3.3.0",
+    "phpunit/phpunit": "~6.2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Firebase\\Bundle\\CloudMessaging\\": ""
+    }
+  }
+}

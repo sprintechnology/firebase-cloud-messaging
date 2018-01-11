@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- Request Normalizer -->
+        <service id="firebase.cloud_messaging.serializer.normalizer.request" class="Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\RequestNormalizer" public="false">
+            <tag name="serializer.normalizer" />
+        </service>
+        <!-- Request Notification Normalizer -->
+        <service id="firebase.cloud_messaging.serializer.normalizer.request.notification.ios" class="Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\Request\Notification\IOSNormalizer" public="false">
+            <tag name="serializer.normalizer" />
+        </service>
+        <service id="firebase.cloud_messaging.serializer.normalizer.request.notification.android" class="Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\Request\Notification\AndroidNormalizer" public="false">
+            <tag name="serializer.normalizer" />
+        </service>
+        <service id="firebase.cloud_messaging.serializer.normalizer.request.notification.web" class="Firebase\Bundle\CloudMessagingBundle\Serializer\Normalizer\Request\Notification\WebNormalizer" public="false">
+            <tag name="serializer.normalizer" />
+        </service>
+
+        <!-- Response Denormalizer -->
+        <service id="firebase.cloud_messaging.serializer.denormalizer.response" class="Firebase\Bundle\CloudMessagingBundle\Serializer\Denormalizer\ResponseDenormalizer" public="false">
+            <tag name="serializer.normalizer" />
+        </service>
+        <!-- Result Response Denormalizer -->
+        <service id="firebase.cloud_messaging.serializer.denormalizer.response.result" class="Firebase\Bundle\CloudMessagingBundle\Serializer\Denormalizer\Response\ResultDenormalizer" public="false">
+            <tag name="serializer.normalizer" />
+        </service>
+    </services>
+</container>
