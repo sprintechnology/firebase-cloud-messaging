@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e5302e5c11c95c8f91babccafc0c839",
-    "content-hash": "344019f673ae77974643d154f4117c7a",
+    "hash": "8ec54ad3ddc4447650f258a650510376",
+    "content-hash": "3809d65a6d27d15aee26280ab87d4377",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
