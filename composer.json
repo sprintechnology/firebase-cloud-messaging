@@ -1,5 +1,5 @@
 {
-  "name": "firebase/cloud-messaging",
+  "name": "sprintehnology/firebase-cloud-messaging",
   "description": "A bundle for Firebase cloud messaging",
   "type": "symfony-bundle",
   "require": {
