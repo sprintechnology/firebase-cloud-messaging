@@ -4,7 +4,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <service id="Firebase\Bundle\CloudMessagingBundle\Service\FCMService" class="Firebase\Bundle\CloudMessagingBundle\Service\FCMService">
-            <argument type="service" id="firebase.cloud_messaging.client"/>
+            <argument type="service" id="Firebase\Bundle\CloudMessagingBundle\Http\Client"/>
             <argument type="service" id="serializer"/>
         </service>
         <service id="Firebase\Bundle\CloudMessagingBundle\Http\Client" class="Firebase\Bundle\CloudMessagingBundle\Http\Client">

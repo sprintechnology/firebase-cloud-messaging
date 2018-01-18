@@ -4,7 +4,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <service id="Firebase\Bundle\CloudMessagingBundle\Command\SimpleMessageCommand" class="Firebase\Bundle\CloudMessagingBundle\Command\SimpleMessageCommand">
-            <argument type="service" id="firebase.cloud_messaging.service" />
+            <argument type="service" id="Firebase\Bundle\CloudMessagingBundle\Service\FCMService" />
             <tag name="console.command" />
         </service>
     </services>
