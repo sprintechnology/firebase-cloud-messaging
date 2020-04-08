@@ -14,7 +14,7 @@
     "guzzlehttp/guzzle": "~6.1"
   },
   "require-dev": {
-    "symfony/phpunit-bridge": "~3.3.0",
+    "symfony/phpunit-bridge": "~3.4.26",
     "phpunit/phpunit": "~6.2.0"
   },
   "autoload": {

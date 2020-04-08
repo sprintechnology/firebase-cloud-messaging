@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c07ecf9542e2630c4ae453076c01d4d3",
+    "content-hash": "9f504d45cd576b0dd0388ac7edde2359",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -3012,6 +3012,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-08-03T14:08:16+00:00"
         },
         {
@@ -3575,16 +3576,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.3.18",
+            "version": "v3.4.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "14cdfbf8092a42d0b6ec2df50ca832c12458cddf"
+                "reference": "a43a2f6c465a2d99635fea0addbebddc3864ad97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/14cdfbf8092a42d0b6ec2df50ca832c12458cddf",
-                "reference": "14cdfbf8092a42d0b6ec2df50ca832c12458cddf",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/a43a2f6c465a2d99635fea0addbebddc3864ad97",
+                "reference": "a43a2f6c465a2d99635fea0addbebddc3864ad97",
                 "shasum": ""
             },
             "require": {
@@ -3594,7 +3595,6 @@
                 "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
             },
             "suggest": {
-                "ext-zip": "Zip support is required when using bin/simple-phpunit",
                 "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
             },
             "bin": [
@@ -3603,7 +3603,7 @@
             "type": "symfony-bridge",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "3.4-dev"
                 },
                 "thanks": {
                     "name": "phpunit/phpunit",
@@ -3637,7 +3637,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2018-05-25T11:34:02+00:00"
+            "time": "2019-04-16T09:03:16+00:00"
         },
         {
             "name": "theseer/tokenizer",
